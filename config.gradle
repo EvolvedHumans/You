@@ -2,7 +2,7 @@
 ext {
 
     //todo 主模块是否运用到正式版上，将子模块引入
-    isRelease = true
+    isRelease = false
 
     //AndroidVersion 基本配置
     AndroidVersion = [

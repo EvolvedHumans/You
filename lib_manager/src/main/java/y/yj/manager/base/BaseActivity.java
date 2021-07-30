@@ -8,6 +8,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 
+import butterknife.ButterKnife;
+
 /**
  * 项目负责人： 杨帆
  * 包名：      y.yj.manager.base
@@ -21,6 +23,7 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         initWindow();
         setContentView(layoutId());
+        ButterKnife.bind(this);
         initView();
     }
 

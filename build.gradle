@@ -12,6 +12,7 @@ buildscript {
         // in the individual module build.gradle files
         //在项目根目录的build.gradle里依赖AspectJX
         classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.8'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
     }
 }
 

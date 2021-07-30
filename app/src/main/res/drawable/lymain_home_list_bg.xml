@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--lymain_home 菜单栏背景-->
+<shape xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--    设置实心颜色-->
+    <solid
+        android:color="@color/white"
+        tools:ignore="StateListReachable" />
+
+    <!--    设置边角弧度-->
+    <corners
+        android:radius="10dp"/>
+</shape>

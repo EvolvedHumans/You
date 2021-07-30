@@ -1,0 +1,10 @@
+include ':module_login'
+include ':app_health'
+include ':lib_weight'
+include ':module_message'
+include ':module_me'
+include ':module_money'
+include ':module_home'
+include ':lib_manager'
+include ':app'
+rootProject.name = "You"

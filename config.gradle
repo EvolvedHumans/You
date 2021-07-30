@@ -1,0 +1,39 @@
+//扩展块
+ext {
+
+    //todo 主模块是否运用到正式版上，将子模块引入
+    isRelease = true
+
+    //AndroidVersion 基本配置
+    AndroidVersion = [
+            'compileSdkVersion': 30,
+            'buildToolsVersion': "30.0.2",
+    ]
+
+    //Android JDK版本
+    AndroidOptions = [
+            'sourceCompatibility': JavaVersion.VERSION_1_8,
+            'targetCompatibility': JavaVersion.VERSION_1_8
+    ]
+
+    //Android Config基本配置文件
+    AndroidConfig = [
+            "minSdkVersion"   : 26,
+            "targetSdkVersion": 30,
+            "resConfigs"      : 'zh',
+            "versionName"     : "1.0",
+            "versionCode"     : 1
+    ]
+
+    //组件化下各个模块对应的包名
+    AppId = [
+            "app"    : "y.yj.you",
+            "health" : "y.yj.app_health",
+            "home"   : "y.yj.module_home",
+            "login"  : "y.yj.module_login",
+            "me"     : "y.yj.module_me",
+            "message": "y.yj.module_message",
+            "money"  : "y.yj.module_money"
+    ]
+
+}

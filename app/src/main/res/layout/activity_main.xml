@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:background="@drawable/lymain_top_bg">
+
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+<!--    itemTextAppearanceActive 点击时的itemText 字体大小 文本风格-->
+<!--    itemTextAppearanceInactive 未选中时的itemText 字体大小 文本风格-->
+<!--    labelVisibilityMode 底部栏 图标、文字 显示风格-->
+<!--    itemTextColor 底部导航栏字体颜色风格-->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bv_home_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:itemBackground="@null"
+        app:itemTextAppearanceActive="@style/BottomTabTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomTabTextStyle"
+        app:itemTextColor="@drawable/home_navigation_color_selector"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/lymain_menu"/>
+
+
+</LinearLayout>

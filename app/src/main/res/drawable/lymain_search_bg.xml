@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:width="283dp" android:height="28dp">
+        <shape android:shape="rectangle">
+<!--            半透明色是16进制表示，前两位是透明度，后6位是颜色值。-->
+            <solid android:color="#66ffffff" />
+            <corners
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp"
+                android:bottomLeftRadius="5dp"
+                android:bottomRightRadius="5dp" />
+        </shape>
+    </item>
+</selector>

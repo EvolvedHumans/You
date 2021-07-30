@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+}
+
+apply from: "../config.gradle"//需要引入使用，app gradle才可以调用
+apply from: "../lib.gradle"//需要引入使用，app gradle才可以调用
+apply from: "../implementation.gradle"//需要引入使用，app gradle才可以调用
+
+android {
+
+    compileSdkVersion AndroidVersion.compileSdkVersion
+    buildToolsVersion AndroidVersion.buildToolsVersion
+
+    compileOptions {
+        sourceCompatibility AndroidOptions.sourceCompatibility
+        targetCompatibility AndroidOptions.targetCompatibility
+    }
+
+
+    defaultConfig {
+
+        applicationId AppId.app
+
+        //版本名称
+        versionName AndroidConfig.versionName
+
+        //版本号
+        versionCode AndroidConfig.versionCode
+
+        //最低安装版本
+        minSdkVersion AndroidConfig.minSdkVersion
+
+        //目标适配版本
+        targetSdkVersion AndroidConfig.targetSdkVersion
+
+        //国际化语言
+        resConfigs AndroidConfig.resConfigs
+
+        //混淆文件
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        //应用平台
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+
+        //路由框架
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+    }
+
+    //APK版本
+    buildTypes {
+        debug {
+            //暴露给Java工程代码，生成Config.Build类
+            buildConfigField("boolean", "isRelease", String.valueOf(isRelease))
+        }
+        release {}
+    }
+
+}
+
+dependencies {
+
+    /**
+     * 正式版本下，各个模块
+     */
+    if (isRelease) {
+        //派健康子APP
+        implementation project(path: ':app_health')
+        //派健康子APP下的module_login
+        implementation project(path: ':module_login')
+        //Me模块
+        implementation project(path: ':module_me')
+        //Home模块
+        implementation project(path: ':module_home')
+        //Message模块
+        implementation project(path: ':module_message')
+        //Money模块
+        implementation project(path: ':module_money')
+    }
+
+    //导入架包
+    AppDependencies.each { k, v -> implementation v }
+
+}

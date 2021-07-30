@@ -1,0 +1,69 @@
+apply from: "../config.gradle"//需要引入使用，app gradle才可以调用
+
+if (isRelease){
+    apply plugin: 'com.android.library'
+}else {
+    apply plugin: 'com.android.application'
+}
+
+apply from: "../lib.gradle"//需要引入使用，app gradle才可以调用
+apply from: "../implementation.gradle"//需要引入使用，app gradle才可以调用
+
+android {
+
+    compileSdkVersion AndroidVersion.compileSdkVersion
+    buildToolsVersion AndroidVersion.buildToolsVersion
+
+    compileOptions {
+        sourceCompatibility AndroidOptions.sourceCompatibility
+        targetCompatibility AndroidOptions.targetCompatibility
+    }
+
+    defaultConfig {
+
+        if (!isRelease){
+            applicationId AppId.module_me
+        }
+
+        //最低安装版本
+        minSdkVersion AndroidConfig.minSdkVersion
+
+        //目标适配版本
+        targetSdkVersion AndroidConfig.targetSdkVersion
+
+        //国际化语言
+        resConfigs AndroidConfig.resConfigs
+
+        //版本名称
+        versionName AndroidConfig.versionName
+
+        //版本号
+        versionCode AndroidConfig.versionCode
+
+        //混淆文件
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        //应用平台
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86'
+        }
+
+        //路由框架
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [ moduleName : project.getName() ]
+            }
+        }
+
+    }
+
+    //APK版本
+    buildTypes {
+        debug {
+            //暴露给Java工程代码，生成Config.Build类
+            buildConfigField("boolean", "isRelease", String.valueOf(isRelease))
+        }
+        release {}
+    }
+
+}

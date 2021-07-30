@@ -1,0 +1,67 @@
+//扩展块
+ext{
+    LibPublic = [
+            //基础类库开发模块
+            'appcompat': 'androidx.appcompat:appcompat:1.1.0',
+            'material' : 'com.google.android.material:material:1.1.0',
+            //junit测试模块
+            'junit'    : 'junit:junit:4.12',
+            'runner'   : 'com.android.support.test:runner:1.0.1',
+            'espresso' : 'com.android.support.test.espresso:espresso-core:3.0.1'
+    ]
+
+    //主APP模块架包管理
+    AppDependencies = [
+            'viewpager': 'androidx.viewpager:viewpager:1.0.0',
+            'layout'   : 'com.scwang.smart:refresh-layout-kernel:2.0.3',   //核心必须依赖
+            'header'   : 'com.scwang.smart:refresh-header-classics:2.0.3'    //经典刷新头
+    ]
+
+    //module_home 主页模块
+    ModuleHome = [
+
+    ]
+
+    //module_login 登录模块
+    ModuleLogin = [
+
+    ]
+
+    //module_me 个人模块
+    ModuleMe = [
+
+    ]
+
+    //module_message 消息模块
+    ModuleMessage = [
+
+    ]
+
+    //module_money 理财模块
+    ModuleMoney = [
+
+    ]
+
+    //lib_manager 权限管理包
+    LibManager = [
+            //AOP切面编程库
+            'aspect'     : 'org.aspectj:aspectjrt:1.8.+',
+            // 权限请求框架：https://github.com/getActivity/XXPermissions
+            'permissions': 'com.github.getActivity:XXPermissions:11.5',
+    ]
+
+    //lib_weight 控件管理包
+    LibWeight = [
+
+    ]
+}
+
+dependencies {
+    //阿里路由框架
+    // Replace with the latest version
+    compile 'com.alibaba:arouter-api:1.2.1.1'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.2.1'
+
+    //公共包
+    LibPublic.each { k, v -> implementation v }
+}

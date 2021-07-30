@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item1"
+        android:icon="@drawable/lymain_home"
+        android:title="@string/lymain_item_home"
+        android:checked="true"/>
+
+    <item
+        android:id="@+id/item2"
+        android:icon="@drawable/lymain_money"
+        android:title="@string/lymain_item_money" />
+
+    <item
+        android:id="@+id/item3"
+        android:icon="@drawable/lymain_message"
+        android:title="@string/lymain_item_message" />
+
+    <item
+        android:id="@+id/item4"
+        android:icon="@drawable/lymain_me"
+        android:title="@string/lymian_item_me" />
+
+</menu>

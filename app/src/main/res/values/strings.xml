@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">You</string>
+    <string name="ly_title">社交分享平台</string>
+    <string name="ly_tips">便捷沟通展现个性自我</string>
+    <string name="ly123_title">恋语</string>
+    <string name="ly1_res1">不要着急</string>
+    <string name="ly1_res2">最好的总会在最不经意的时候出现</string>
+    <string name="ly2_res1">我爱你</string>
+    <string name="ly2_res2">不是因为你是一个怎样的人</string>
+    <string name="ly2_res3">而是因为我喜欢与你在一起时的感觉</string>
+    <string name="ly3_res1">与你一诺相许</string>
+    <string name="ly3_res2">是我素色年华里最永恒的风景</string>
+    <string name="ly_bt">立即体验</string>
+    <string name="todo">TODO</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="lymain_search">新闻资讯</string>
+    <string name="lymain_top_item1">扫一扫</string>
+    <string name="lymain_top_item2">付钱/收钱</string>
+    <string name="lymain_top_item3">出行</string>
+    <string name="lymain_top_item4">卡包</string>
+    <string name="lymain_item_home">首页</string>
+    <string name="lymain_item_money">理财</string>
+    <string name="lymain_item_message">消息</string>
+    <string name="lymian_item_me">我的</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_dynamicfeature">Module Title</string>
+</resources>

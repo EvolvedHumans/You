@@ -8,6 +8,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.Collection;
+
 /**
  * 项目负责人： 杨帆
  * 包名：      y.yj.permission
@@ -21,9 +23,6 @@ public class ActivityManager implements Application.ActivityLifecycleCallbacks {
 
     private static volatile ActivityManager sInstance;
 
-    /**当前应用上下文对象*/
-    private Application application;
-
     public static ActivityManager getInstance(){
         if (sInstance == null){
             synchronized (ActivityManager.class){
@@ -35,17 +34,15 @@ public class ActivityManager implements Application.ActivityLifecycleCallbacks {
         return sInstance;
     }
 
-    public  void init(Application application){
+    /**当前应用上下文对象*/
+    private Application application;
+
+    /**队列存放Activity，HashMap集合存放Activity，key值为Activity的hashcode，通过key值取出Activity对象*/
+
+    public void init(Application application){
         this.application = application;
         //注册ActivityLifecycleCallbacks 监听
         this.application.registerActivityLifecycleCallbacks(this);
-    }
-
-    /**
-     * 获取 Application 对象
-     */
-    public Application getApplication() {
-        return application;
     }
 
     @Override

@@ -2,6 +2,9 @@ package y.yj.module_login;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import y.yj.lib_weight.AdertAlertDialog;
 import y.yj.manager.argument.ArguActivity;
 import y.yj.manager.base.BaseActivity;
@@ -18,4 +21,6 @@ public class LoginActivity extends BaseActivity {
     public void initView() {
         AdertAlertDialog.init(this);
     }
+
+
 }

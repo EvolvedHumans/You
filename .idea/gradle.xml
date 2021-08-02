@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app_health" />
+            <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/lib_manager" />
             <option value="$PROJECT_DIR$/lib_weight" />
             <option value="$PROJECT_DIR$/module_home" />
@@ -24,7 +25,6 @@
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
-        <option name="useQualifiedModuleNames" value="true" />
       </GradleProjectSettings>
     </option>
   </component>

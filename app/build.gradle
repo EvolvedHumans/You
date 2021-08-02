@@ -3,8 +3,6 @@ plugins {
 }
 
 apply from: "../config.gradle"//需要引入使用，app gradle才可以调用
-apply from: "../lib.gradle"//需要引入使用，app gradle才可以调用
-apply from: "../implementation.gradle"//需要引入使用，app gradle才可以调用
 
 android {
 
@@ -16,6 +14,13 @@ android {
         targetCompatibility AndroidOptions.targetCompatibility
     }
 
+
+    //省略前面的代码..
+    repositories {
+        flatDir {
+            dirs '../common/libs/', 'libs'
+        }
+    }
 
     defaultConfig {
 
@@ -47,10 +52,9 @@ android {
         //路由框架
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [moduleName: project.getName()]
+                arguments = [ moduleName : project.getName() ]
             }
         }
-
     }
 
     //APK版本
@@ -65,10 +69,17 @@ android {
 }
 
 dependencies {
-
-    /**
-     * 正式版本下，各个模块
-     */
+    //外部库导入
+    Main.each { k, v -> implementation v }
+    //注解处理器导入
+    AnnotationProcessors.each { k, v -> annotationProcessor v}
+    //公共模块导入
+    implementation project(path: ':common')
+    //weight模块导入
+    implementation project(path: ':lib_weight')
+    //manager模块导入
+    implementation project(path: ':lib_manager')
+    /**正式版本下，各个模块**/
     if (isRelease) {
         //派健康子APP
         implementation project(path: ':app_health')
@@ -83,8 +94,4 @@ dependencies {
         //Money模块
         implementation project(path: ':module_money')
     }
-
-    //导入架包
-    AppDependencies.each { k, v -> implementation v }
-
 }

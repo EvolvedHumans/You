@@ -15,6 +15,9 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.facade.callback.NavCallback;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,6 +32,7 @@ import y.yj.lib_weight.ScreenVideoView;
 import y.yj.manager.argument.ArguActivity;
 import y.yj.manager.base.BaseActivity;
 import y.yj.manager.log.Log4j;
+import y.yj.manager.permission.NeedPermission;
 
 @Route(path = ArguActivity.ARouterFlashActivity)
 public class FlashActivity extends BaseActivity {
@@ -66,7 +70,16 @@ public class FlashActivity extends BaseActivity {
         test();
     }
 
+    @NeedPermission({Permission.CAMERA})
     public void test(){
+//        XXPermissions.with(this)
+//                .permission(Permission.CAMERA)
+//                .request(new OnPermissionCallback() {
+//                    @Override
+//                    public void onGranted(List<String> permissions, boolean all) {
+//
+//                    }
+//                });
 //        //创建集合
 //        Collection collection = new ArrayList();
 //        collection.add("菜单");

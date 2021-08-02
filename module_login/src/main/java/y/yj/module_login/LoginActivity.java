@@ -22,5 +22,4 @@ public class LoginActivity extends BaseActivity {
         AdertAlertDialog.init(this);
     }
 
-
 }

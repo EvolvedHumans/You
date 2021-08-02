@@ -6,9 +6,6 @@ if (isRelease){
     apply plugin: 'com.android.application'
 }
 
-apply from: "../lib.gradle"//需要引入使用，app gradle才可以调用
-apply from: "../implementation.gradle"//需要引入使用，app gradle才可以调用
-
 android {
 
     compileSdkVersion AndroidVersion.compileSdkVersion
@@ -17,6 +14,13 @@ android {
     compileOptions {
         sourceCompatibility AndroidOptions.sourceCompatibility
         targetCompatibility AndroidOptions.targetCompatibility
+    }
+
+    //省略前面的代码..
+    repositories {
+        flatDir {
+            dirs '../common/libs/', 'libs'
+        }
     }
 
     defaultConfig {
@@ -54,7 +58,6 @@ android {
                 arguments = [ moduleName : project.getName() ]
             }
         }
-
     }
 
     //APK版本
@@ -65,5 +68,17 @@ android {
         }
         release {}
     }
+}
 
+dependencies {
+    //外部库导入
+    Login.each { k, v -> implementation v }
+    //注解处理器导入
+    AnnotationProcessors.each { k, v -> annotationProcessor v}
+    //公共组件
+    implementation project(':common')
+    //weight模块导入
+    implementation project(path: ':lib_weight')
+    //manager模块导入
+    implementation project(path: ':lib_manager')
 }

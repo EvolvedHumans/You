@@ -8,3 +8,4 @@ include ':module_home'
 include ':lib_manager'
 include ':app'
 rootProject.name = "You"
+include ':common'

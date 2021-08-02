@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.Collection;
+import java.util.HashMap;
 
 /**
  * 项目负责人： 杨帆
@@ -23,10 +24,10 @@ public class ActivityManager implements Application.ActivityLifecycleCallbacks {
 
     private static volatile ActivityManager sInstance;
 
-    public static ActivityManager getInstance(){
-        if (sInstance == null){
-            synchronized (ActivityManager.class){
-                if (sInstance == null){
+    public static ActivityManager getInstance() {
+        if (sInstance == null) {
+            synchronized (ActivityManager.class) {
+                if (sInstance == null) {
                     sInstance = new ActivityManager();
                 }
             }
@@ -34,12 +35,60 @@ public class ActivityManager implements Application.ActivityLifecycleCallbacks {
         return sInstance;
     }
 
-    /**当前应用上下文对象*/
+    /**
+     * 当前应用上下文对象
+     */
     private Application application;
 
-    /**队列存放Activity，HashMap集合存放Activity，key值为Activity的hashcode，通过key值取出Activity对象*/
+    /**
+     * 最后一个可见
+     */
+    private String mListVisible;
 
-    public void init(Application application){
+    /**
+     * 最后一个不可见
+     **/
+    private String mListInvisible;
+
+    /**
+     * 队列存放Activity，HashMap集合存放Activity，key值为Activity的hashcode，通过key值取出Activity对象
+     */
+    private HashMap<String, Activity> hashMap = new HashMap<>();
+
+    /**
+     * HashMap集合key值获取
+     * @param obj Activity类型
+     * @return 唯一码
+     */
+    public String getKey(Object obj){
+        return TAG + obj.hashCode();
+    }
+
+    /**
+     * true 可见， false 不可见
+     *
+     * @return 判断是否前台可见
+     */
+    public boolean isForeground(){
+        if (mListVisible.equals(mListInvisible)){
+            return false;
+        }
+        return getTopActivity()!=null;
+    }
+
+    /**
+     *
+     * @return 获取栈顶Activity
+     */
+    public Activity getTopActivity(){
+        return hashMap.get(mListVisible);
+    }
+
+    /**
+     *
+     * @param application 获取初始化Application
+     */
+    public void init(Application application) {
         this.application = application;
         //注册ActivityLifecycleCallbacks 监听
         this.application.registerActivityLifecycleCallbacks(this);
@@ -47,36 +96,48 @@ public class ActivityManager implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-        Log.e(TAG,"onActivityCreated()");
+        Log.d(TAG, "onActivityCreated()");
+        mListVisible = getKey(activity);
+        hashMap.put(getKey(activity),activity);
     }
 
     @Override
     public void onActivityStarted(@NonNull Activity activity) {
-        Log.d(TAG,"onActivityStarted()");
+        Log.d(TAG, "onActivityStarted()");
+        mListVisible = getKey(activity);
     }
 
     @Override
     public void onActivityResumed(@NonNull Activity activity) {
-        Log.d(TAG,"onActivityResumed()");
+        Log.d(TAG, "onActivityResumed()");
+        mListVisible = getKey(activity);
     }
 
     @Override
     public void onActivityPaused(@NonNull Activity activity) {
-        Log.d(TAG,"onActivityPaused()");
+        Log.d(TAG, "onActivityPaused()");
+        mListInvisible = getKey(activity);
     }
 
     @Override
     public void onActivityStopped(@NonNull Activity activity) {
-        Log.d(TAG,"onActivityStopped()");
-    }
-
-    @Override
-    public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
-        Log.d(TAG,"onActivitySaveInstanceState()");
+        Log.d(TAG, "onActivityStopped()");
+        mListInvisible = getKey(activity);
     }
 
     @Override
     public void onActivityDestroyed(@NonNull Activity activity) {
-        Log.d(TAG,"onActivityDestroyed()");
+        Log.d(TAG, "onActivityDestroyed()");
+        hashMap.remove(getKey(activity));
+        mListInvisible = getKey(activity);
+        if (getKey(activity).equals(mListInvisible)){
+            //清除当前标记
+            mListInvisible = null;
+        }
+    }
+
+    @Override
+    public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
+        Log.d(TAG, "onActivitySaveInstanceState()");
     }
 }

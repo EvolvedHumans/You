@@ -36,4 +36,74 @@ ext {
             "money"  : "y.yj.module_money"
     ]
 
+    //common模块jar包管理（公共模块）
+    Common = [
+            //阿里路由框架
+            'arouter'    : 'com.alibaba:arouter-api:1.2.1.1',
+            //butterknife
+            'butterknife': 'com.jakewharton:butterknife:10.2.3',
+            //viewpager框架
+            'viewpager'  : 'androidx.viewpager:viewpager:1.0.0',
+            //上拉、下拉刷新
+            'layout'     : 'com.scwang.smart:refresh-layout-kernel:2.0.3',   //核心必须依赖
+            'header'     : 'com.scwang.smart:refresh-header-classics:2.0.3',   //经典刷新头
+            //AOP切面编程库
+            'aspect'     : 'org.aspectj:aspectjrt:1.8.+',
+            // 权限请求框架：https://github.com/getActivity/XXPermissions
+            'permissions': 'com.github.getActivity:XXPermissions:11.5',
+            //基础类库开发模块
+            'appcompat'  : 'androidx.appcompat:appcompat:1.1.0',
+            'material'   : 'com.google.android.material:material:1.1.0',
+            //junit测试模块
+            'junit'      : 'junit:junit:4.12',
+            'runner'     : 'com.android.support.test:runner:1.0.1',
+            'espresso'   : 'com.android.support.test.espresso:espresso-core:3.0.1',
+    ]
+
+    //注解处理器框架
+    AnnotationProcessors = [
+            'arouter'    : 'com.alibaba:arouter-compiler:1.1.2.1',
+            'butterknife': 'com.jakewharton:butterknife-compiler:10.2.3'
+    ]
+
+    //主APP模块架包管理
+    Main = [
+
+    ]
+
+    //module_home 主页模块
+    Home = [
+
+    ]
+
+    //module_login 登录模块
+    Login = [
+
+    ]
+
+    //module_me 个人模块
+    Me = [
+
+    ]
+
+    //module_message 消息模块
+    Message = [
+
+    ]
+
+    //module_money 理财模块
+    Money = [
+
+    ]
+
+    //lib_manager 权限管理包
+    LibManager = [
+
+    ]
+
+    //lib_weight 控件管理包
+    LibWeight = [
+
+    ]
+
 }

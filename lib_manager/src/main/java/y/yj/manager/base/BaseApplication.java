@@ -3,6 +3,7 @@ package y.yj.manager.base;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.hjq.permissions.XXPermissions;
 
 import y.yj.manager.BuildConfig;
 import y.yj.manager.permission.ActivityManager;
@@ -18,7 +19,6 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        ActivityManager.getInstance().init(this);
         //todo 非正式版打开日志功能
         if (!BuildConfig.isRelease){
             //打印Log
@@ -27,6 +27,8 @@ public class BaseApplication extends Application {
             ARouter.openDebug();
         }
         ARouter.init(this);
+        XXPermissions.setScopedStorage(true);
+        ActivityManager.getInstance().init(this);
     }
 }
 
